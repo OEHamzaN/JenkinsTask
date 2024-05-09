@@ -4,50 +4,62 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Use Maven for building
-                // Example: sh 'mvn clean package'
+                // Example: Use Maven for building
+                sh 'mvn clean package'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                // Use JUnit for unit tests and tools like Selenium for integration tests
+                // Example: Use JUnit for unit tests
+                sh 'mvn test'
+                // Example: Use Selenium for integration tests
+                sh 'selenium-runner run testsuite'
             }
         }
         stage('Code Analysis') {
             steps {
-                // Use SonarQube for code analysis
+                // Example: Use SonarQube for code analysis
+                sh 'sonar-scanner'
             }
         }
         stage('Security Scan') {
             steps {
-                // Use tools like OWASP ZAP or SonarQube for security scanning
+                // Example: Use OWASP ZAP for security scanning
+                sh 'zap-cli --quick-scan https://example.com'
             }
         }
         stage('Deploy to Staging') {
             steps {
-                // Use deployment scripts or tools like AWS CodeDeploy to deploy to staging
+                // Example: Use deployment scripts or tools like AWS CodeDeploy to deploy to staging
+                sh 'aws deploy staging-app'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                // Run integration tests against staging environment
+                // Example: Run integration tests against staging environment
+                sh 'curl http://staging-app-url'
             }
         }
         stage('Deploy to Production') {
             steps {
-                // Use deployment scripts or tools like AWS CodeDeploy to deploy to production
+                // Example: Use deployment scripts or tools like AWS CodeDeploy to deploy to production
+                sh 'aws deploy production-app'
             }
         }
     }
     
     post {
         success {
-            // Send success notification email
-            // Attach logs
+            // Example: Send success notification email
+            emailext body: "Pipeline succeeded. Good job!",
+                     subject: "Pipeline Success Notification",
+                     to: "hnr3261@gmail.com"
         }
         failure {
-            // Send failure notification email
-            // Attach logs
+            // Example: Send failure notification email
+            emailext body: "Pipeline failed. Please investigate.",
+                     subject: "Pipeline Failure Notification",
+                     to: "hnr3261@gmail.com"
         }
     }
 }

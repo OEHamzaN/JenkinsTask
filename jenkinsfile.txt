@@ -53,13 +53,13 @@ pipeline {
             // Example: Send success notification email
             emailext body: "Pipeline succeeded. Good job!",
                      subject: "Pipeline Success Notification",
-                     to: "hnr3261@gmail.com"
+                     to: "hamzanadeem3261@gmail.com"
         }
         failure {
             // Example: Send failure notification email
             emailext body: "Pipeline failed. Please investigate.",
                      subject: "Pipeline Failure Notification",
-                     to: "hnr3261@gmail.com"
+                     to: "hamzanadeem3261@gmail.com"
         }
     }
 }

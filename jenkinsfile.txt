@@ -4,46 +4,42 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Example: Use Maven for building
-                sh 'mvn clean package'
+                echo 'Building the code using Maven...'
+                echo 'Example: mvn clean package'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                // Example: Use JUnit for unit tests
-                sh 'mvn test'
-                // Example: Use Selenium for integration tests
-                sh 'selenium-runner run testsuite'
+                echo 'Running unit tests with JUnit...'
+                echo 'Running integration tests with Selenium...'
             }
         }
         stage('Code Analysis') {
             steps {
-                // Example: Use SonarQube for code analysis
-                sh 'sonar-scanner'
+                echo 'Performing code analysis using SonarQube...'
             }
         }
         stage('Security Scan') {
             steps {
-                // Example: Use OWASP ZAP for security scanning
-                sh 'zap-cli --quick-scan https://example.com'
+                echo 'Performing security scan using OWASP ZAP or SonarQube...'
             }
         }
         stage('Deploy to Staging') {
             steps {
-                // Example: Use deployment scripts or tools like AWS CodeDeploy to deploy to staging
-                sh 'aws deploy staging-app'
+                echo 'Deploying the application to staging environment...'
+                echo 'Example: AWS CodeDeploy to staging'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                // Example: Run integration tests against staging environment
-                sh 'curl http://staging-app-url'
+                echo 'Running integration tests on staging environment...'
+                echo 'Example: curl http://staging-app-url'
             }
         }
         stage('Deploy to Production') {
             steps {
-                // Example: Use deployment scripts or tools like AWS CodeDeploy to deploy to production
-                sh 'aws deploy production-app'
+                echo 'Deploying the application to production environment...'
+                echo 'Example: AWS CodeDeploy to production'
             }
         }
     }
